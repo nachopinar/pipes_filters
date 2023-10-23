@@ -8,6 +8,13 @@ namespace CompAndDel
     {
         static void Main(string[] args)
         {
+            PictureProvider provider = new PictureProvider();
+            IPicture picture = provider.GetPicture(@"beer.jpg");
+            IFilter Blur
+
         }
     }
 }
+
+
+
