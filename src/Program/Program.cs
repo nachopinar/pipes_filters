@@ -10,7 +10,16 @@ namespace CompAndDel
         {
             PictureProvider provider = new PictureProvider();
             IPicture picture = provider.GetPicture(@"beer.jpg");
-            IFilter Blur
+
+            IFilter filter = new FilterBlurConvolution();
+            IFilter filter2 = new FilterGreyscale();
+
+            IPipe pipe0 = new PipeNull();
+            IPipe pipe = new PipeSerial(filter2, pipe0);
+            IPipe pipe2 = new PipeSerial(filter, pipe);
+
+            IPicture result = pipe2.Send(picture);
+            provider.SavePicture(result, "@beer_whith_filter_jpg");
 
         }
     }
